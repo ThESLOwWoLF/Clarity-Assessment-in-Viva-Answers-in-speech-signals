@@ -1,0 +1,103 @@
+13:09:25 INFO dataset: 3563 clips, 133 unique recordings
+13:09:25 INFO clips per class: {'low': 1659, 'medium': 1308, 'high': 596}
+13:09:25 INFO clips per recording: median 24, min 6, max 74
+13:09:25 INFO clip duration (s): {'count': 3563.0, 'mean': 12.97, 'std': 15.84, 'min': 0.28, '10%': 1.52, '25%': 3.15, '50%': 7.49, '75%': 17.26, '90%': 30.61, 'max': 319.48}
+13:09:25 INFO clips longer than 8s (truncated): 1711
+13:09:26 INFO old: LDA on all data, 1 random split     macro F1 0.691 (single split)
+13:09:26 INFO LDA in pipeline, 1 random split          macro F1 0.424 (single split)
+13:09:26 INFO majority class                           macro F1 0.212 +/- 0.002  QWK 0.000
+13:09:26 INFO stratified random                        macro F1 0.331 +/- 0.010  QWK 0.002
+13:09:28 INFO MFCC + SVM                               macro F1 0.415 +/- 0.028  QWK 0.211
+13:09:28 INFO --- MFCC + SVM ---
+              precision    recall  f1-score   support
+
+         low      0.569     0.661     0.611      1659
+      medium      0.437     0.413     0.424      1308
+        high      0.262     0.174     0.209       596
+
+    accuracy                          0.489      3563
+   macro avg      0.422     0.416     0.415      3563
+weighted avg      0.469     0.489     0.476      3563
+
+confusion matrix summed over folds (rows=true, cols=pred) ['low', 'medium', 'high']
+[[1097  441  121]
+ [ 596  540  172]
+ [ 236  256  104]]
+13:09:33 INFO WavLM + Scaler/LDA/SVM                   macro F1 0.425 +/- 0.019  QWK 0.196
+13:09:33 INFO --- WavLM + Scaler/LDA/SVM ---
+              precision    recall  f1-score   support
+
+         low      0.591     0.524     0.556      1659
+      medium      0.440     0.420     0.430      1308
+        high      0.247     0.349     0.289       596
+
+    accuracy                          0.457      3563
+   macro avg      0.426     0.431     0.425      3563
+weighted avg      0.478     0.457     0.465      3563
+
+confusion matrix summed over folds (rows=true, cols=pred) ['low', 'medium', 'high']
+[[870 482 307]
+ [432 550 326]
+ [170 218 208]]
+13:09:44 INFO layer 0 logreg                           macro F1 0.452 +/- 0.035  QWK 0.281
+13:09:57 INFO layer 1 logreg                           macro F1 0.449 +/- 0.031  QWK 0.278
+13:10:00 INFO layer 2 logreg                           macro F1 0.433 +/- 0.040  QWK 0.264
+13:10:01 INFO layer 3 logreg                           macro F1 0.445 +/- 0.022  QWK 0.264
+13:10:03 INFO layer 4 logreg                           macro F1 0.435 +/- 0.021  QWK 0.261
+13:10:04 INFO layer 5 logreg                           macro F1 0.436 +/- 0.014  QWK 0.247
+13:10:06 INFO layer 6 logreg                           macro F1 0.443 +/- 0.031  QWK 0.252
+13:10:07 INFO layer 7 logreg                           macro F1 0.442 +/- 0.018  QWK 0.250
+13:10:08 INFO layer 8 logreg                           macro F1 0.430 +/- 0.019  QWK 0.257
+13:10:09 INFO layer 9 logreg                           macro F1 0.424 +/- 0.026  QWK 0.259
+13:10:10 INFO layer 10 logreg                          macro F1 0.453 +/- 0.036  QWK 0.267
+13:10:11 INFO layer 11 logreg                          macro F1 0.448 +/- 0.027  QWK 0.272
+13:10:12 INFO layer 12 logreg                          macro F1 0.440 +/- 0.028  QWK 0.256
+13:10:14 INFO layer 10 mean+std logreg                 macro F1 0.425 +/- 0.023  QWK 0.209
+13:10:16 INFO layer 10 mean lda_svm                    macro F1 0.406 +/- 0.020  QWK 0.165
+13:10:17 INFO layer 10 mean lda                        macro F1 0.431 +/- 0.033  QWK 0.222
+13:11:38 INFO layer 10 mean svm_grid                   macro F1 0.457 +/- 0.032  QWK 0.327
+13:11:50 INFO layer 10 mean ordinal_svr                macro F1 0.373 +/- 0.023  QWK 0.214
+13:13:16 INFO layer 12 mean svm_grid                   macro F1 0.451 +/- 0.030  QWK 0.308
+13:13:16 INFO 
+ phase                                model           features           protocol  macro_f1  f1_std  accuracy   qwk  qwk_std
+     1 old: LDA on all data, 1 random split     wavlm L12 mean single 80/20 split     0.691     NaN     0.701 0.611      NaN
+     1      LDA in pipeline, 1 random split     wavlm L12 mean single 80/20 split     0.424     NaN     0.454 0.232      NaN
+     1                       majority class                  -     grouped 5-fold     0.212   0.002     0.466 0.000    0.000
+     1                    stratified random                  -     grouped 5-fold     0.331   0.010     0.385 0.002    0.020
+     1                           MFCC + SVM   40 MFCC mean+std     grouped 5-fold     0.415   0.028     0.489 0.211    0.066
+     1               WavLM + Scaler/LDA/SVM     wavlm L12 mean     grouped 5-fold     0.425   0.019     0.457 0.196    0.054
+     2                       layer 0 logreg      wavlm L0 mean     grouped 5-fold     0.452   0.035     0.490 0.281    0.056
+     2                       layer 1 logreg      wavlm L1 mean     grouped 5-fold     0.449   0.031     0.489 0.278    0.059
+     2                       layer 2 logreg      wavlm L2 mean     grouped 5-fold     0.433   0.040     0.475 0.264    0.063
+     2                       layer 3 logreg      wavlm L3 mean     grouped 5-fold     0.445   0.022     0.485 0.264    0.052
+     2                       layer 4 logreg      wavlm L4 mean     grouped 5-fold     0.435   0.021     0.478 0.261    0.040
+     2                       layer 5 logreg      wavlm L5 mean     grouped 5-fold     0.436   0.014     0.476 0.247    0.038
+     2                       layer 6 logreg      wavlm L6 mean     grouped 5-fold     0.443   0.031     0.482 0.252    0.058
+     2                       layer 7 logreg      wavlm L7 mean     grouped 5-fold     0.442   0.018     0.482 0.250    0.040
+     2                       layer 8 logreg      wavlm L8 mean     grouped 5-fold     0.430   0.019     0.472 0.257    0.035
+     2                       layer 9 logreg      wavlm L9 mean     grouped 5-fold     0.424   0.026     0.465 0.259    0.053
+     2                      layer 10 logreg     wavlm L10 mean     grouped 5-fold     0.453   0.036     0.492 0.267    0.064
+     2                      layer 11 logreg     wavlm L11 mean     grouped 5-fold     0.448   0.027     0.487 0.272    0.070
+     2                      layer 12 logreg     wavlm L12 mean     grouped 5-fold     0.440   0.028     0.478 0.256    0.062
+     2             layer 10 mean+std logreg wavlm L10 mean+std     grouped 5-fold     0.425   0.023     0.468 0.209    0.047
+     2                layer 10 mean lda_svm     wavlm L10 mean     grouped 5-fold     0.406   0.020     0.438 0.165    0.019
+     2                    layer 10 mean lda     wavlm L10 mean     grouped 5-fold     0.431   0.033     0.499 0.222    0.069
+     2               layer 10 mean svm_grid     wavlm L10 mean     grouped 5-fold     0.457   0.032     0.506 0.327    0.077
+     2            layer 10 mean ordinal_svr     wavlm L10 mean     grouped 5-fold     0.373   0.023     0.461 0.214    0.052
+     2               layer 12 mean svm_grid     wavlm L12 mean     grouped 5-fold     0.451   0.030     0.500 0.308    0.063
+13:13:16 INFO --- layer 10 mean svm_grid ---
+              precision    recall  f1-score   support
+
+         low      0.651     0.664     0.657      1659
+      medium      0.461     0.359     0.403      1308
+        high      0.269     0.386     0.317       596
+
+    accuracy                          0.505      3563
+   macro avg      0.460     0.469     0.459      3563
+weighted avg      0.517     0.505     0.507      3563
+
+confusion matrix summed over folds (rows=true, cols=pred) ['low', 'medium', 'high']
+[[1101  351  207]
+ [ 422  469  417]
+ [ 169  197  230]]
+13:13:16 INFO wrote C:\Users\sudha\Education\Study Docs\Amrita\SEM 5\ML\Clarity-Assessment-in-Viva-Answers-in-speech-signals-main\results\errors.md

@@ -1,0 +1,21 @@
+# Local paths to the PRIVATE dataset. Relative paths resolve from the repo root.
+# Point these at your own copy; the data itself is never committed (see .gitignore).
+excel_dir: "../LAB/ML Lab/Excels"
+wav_dir: "wav files"
+
+cache: "cache/features.npz"      # WavLM (all layers, mean+std) + MFCC, per clip
+model_path: "models/clarity.joblib"
+results_dir: "results"
+
+wavlm_model: "microsoft/wavlm-base-plus"
+max_seconds: 8                   # clips are truncated to this before embedding (train and inference)
+seed: 42
+n_splits: 5
+
+# final model used by train.py / predict.py (set from the Phase 2 results table)
+layer: 10                        # 0 = CNN output, 1..12 = transformer layers
+pooling: "mean"                  # "mean" or "mean+std"
+classifier: "svm_grid"            # see src/evaluate.py:make_clf
+
+# API limits
+api_max_seconds: 60
